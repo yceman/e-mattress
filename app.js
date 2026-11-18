@@ -11,7 +11,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -23,9 +23,14 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
+  res.status(404);
+  res.render('404', {url: req.originalUrl});
+});*/
+
+/*app.use(function(req, res, next) {
   next(createError(404));
-});
+});*/
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -38,4 +43,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.use((req, res, next) => {
+  res.status(404).render('404', { 
+    url: req.originalUrl 
+  });
+});
 module.exports = app;
