@@ -57,7 +57,4 @@ function errorHandler(err, req, res, next) {
   res.render('error', { error: err });
 }
 
-app.use('/teste-500', (req, res) => {
-  res.status(500).send('Erro 500 simulado');
-});
 module.exports = app;
