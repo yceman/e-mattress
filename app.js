@@ -39,13 +39,25 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  //res.status(err.status || 500);
+  //res.render('error');
 });
 
 app.use((req, res, next) => {
   res.status(404).render('404', { 
     url: req.originalUrl 
   });
+});
+
+function errorHandler(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500);
+  res.render('error', { error: err });
+}
+
+app.use('/teste-500', (req, res) => {
+  res.status(500).send('Erro 500 simulado');
 });
 module.exports = app;
