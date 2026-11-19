@@ -1,6 +1,24 @@
 {
-  "name": "express",
-  "version": "0.0.0",
+  "name": "e-mattress",
+  "version": "0.2.0",
+  "description":"Expressjs project",
+  "main":"app.js",
+    "keywords": [
+    "node",
+    "api",
+    "tarefas",
+    "express"
+  ],
+  
+  "homepage": "https://github.com/yceman/e-mattress",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yceman/e-mattress"
+  },
+  "bugs": {
+    "url": "https://github.com/yceman/e-mattress/issues"
+  }
+  
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
